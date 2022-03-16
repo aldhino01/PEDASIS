@@ -1,5 +1,6 @@
 package com.example.fireapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -20,6 +21,10 @@ class MainActivity : AppCompatActivity() {
 
         btn_submit.setOnClickListener{
             saveData()
+        }
+        btn_lihat.setOnClickListener{
+            val intent = Intent(this, ShowActivity::class.java)
+            startActivity(intent)
         }
     }
 
