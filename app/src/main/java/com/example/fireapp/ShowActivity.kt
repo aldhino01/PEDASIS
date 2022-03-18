@@ -1,9 +1,11 @@
 package com.example.fireapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ListView
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.activity_show.*
 
 class ShowActivity : AppCompatActivity() {
 
@@ -19,6 +21,11 @@ class ShowActivity : AppCompatActivity() {
         list = mutableListOf()
         listView = findViewById(R.id.listView)
 
+        tambah.setOnClickListener{
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
         ref.addValueEventListener(object : ValueEventListener{
             override fun onCancelled(p0: DatabaseError) {
                 TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
@@ -32,8 +39,9 @@ class ShowActivity : AppCompatActivity() {
                         val user = h.getValue(User::class.java)
                         list.add(user!!)
                     }
-                    val adapter = Adapter(this@show,R.layout.users,list)
+                    val adapter = Adapter(this@ShowActivity,R.layout.users,list)
                     listView.adapter = adapter
+
                 }
             }
         })

@@ -37,9 +37,8 @@ class MainActivity : AppCompatActivity() {
         val nis = edit_nis.text.toString()
         val nisn = edit_nisn.text.toString()
 
-
-        val pesdik = User(nama,kelas,sekolah,nis,nisn)
         val pesdikId = ref.push().key.toString()
+        val pesdik = User(pesdikId,nama,kelas,sekolah,nis,nisn)
 
         ref.child(pesdikId).setValue(pesdik).addOnCompleteListener{
             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
